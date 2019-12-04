@@ -42,30 +42,30 @@ import org.snaker.nutz.SnakerIocLoader;
  */
 public class TestNutz {
 	
-	protected Ioc ioc;
-    private SnakerEngine engine;
-    @Before
-    public void before() throws ClassNotFoundException {
-    	IocLoader loader = new ComboIocLoader("*js", "ioc.js", "*"+SnakerIocLoader.class.getName());
-        ioc = new NutIoc(loader);
-        engine = ioc.get(SnakerEngine.class);
-    }
-    @After
-    public void after() {
-    	if (ioc != null)
-    		ioc.depose();
-    }
-
-    @Test
-    public void test() {
-        engine.process().deploy(StreamHelper.getStreamFromClasspath("process.snaker"));
-        Map<String, Object> args = new HashMap<String, Object>();
-        args.put("task1.operator", new String[]{"1"});
-        Order order = engine.startInstanceByName("simple", 0, "2", args);
-        System.out.println("order=" + order);
-        List<Task> tasks = engine.query().getActiveTasks(new QueryFilter().setOrderId(order.getId()));
-        for(Task task : tasks) {
-            engine.executeTask(task.getId(), "1", args);
-        }
-    }
+//	protected Ioc ioc;
+//    private SnakerEngine engine;
+//    @Before
+//    public void before() throws ClassNotFoundException {
+//    	IocLoader loader = new ComboIocLoader("*js", "ioc.js", "*"+SnakerIocLoader.class.getName());
+//        ioc = new NutIoc(loader);
+//        engine = ioc.get(SnakerEngine.class);
+//    }
+//    @After
+//    public void after() {
+//    	if (ioc != null)
+//    		ioc.depose();
+//    }
+//
+//    @Test
+//    public void test() {
+//        engine.process().deploy(StreamHelper.getStreamFromClasspath("process.snaker"));
+//        Map<String, Object> args = new HashMap<String, Object>();
+//        args.put("task1.operator", new String[]{"1"});
+//        Order order = engine.startInstanceByName("simple", 0, "2", args);
+//        System.out.println("order=" + order);
+//        List<Task> tasks = engine.query().getActiveTasks(new QueryFilter().setOrderId(order.getId()));
+//        for(Task task : tasks) {
+//            engine.executeTask(task.getId(), "1", args);
+//        }
+//    }
 }

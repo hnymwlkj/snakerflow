@@ -42,6 +42,19 @@ public class QueryFilter implements Serializable {
 	 * 流程定义id
 	 */
 	private String processId;
+	private String[] processIds;
+	public String[] getProcessIds() {
+		return processIds;
+	}
+
+	public QueryFilter setProcessIds(String[] processIds) {
+		AssertHelper.notNull(processIds);
+		this.processIds = processIds;
+		return this;
+
+	}
+
+
 	/**
 	 * 流程定义版本号
 	 */
